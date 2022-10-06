@@ -29,7 +29,7 @@ function scanBarcode(canvasElement, format) {
     var imageData = canvasElement.getContext('2d').getImageData(0, 0, imgWidth, imgHeight);
     var sourceBuffer = imageData.data;
 
-    if (zxing != null) {
+    if (zxing != null && false) {
         var buffer = zxing._malloc(sourceBuffer.byteLength);
         zxing.HEAPU8.set(sourceBuffer, buffer);
         var result = zxing.readBarcodeFromPixmap(buffer, imgWidth, imgHeight, true, format);
