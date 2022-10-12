@@ -22,11 +22,11 @@ ZXing().then(function(value) {
     zxing = value;
 });
 
-function scanBarcode(canvasElement, format) {
+function scanBarcode(canvasContext, format) {
 
-    var imgWidth = canvasElement.width;
-    var imgHeight = canvasElement.height;
-    var imageData = canvasElement.getContext('2d').getImageData(0, 0, imgWidth, imgHeight);
+    var imgWidth = canvasContext.canvas.width;
+    var imgHeight = canvasContext.canvas.height;
+    var imageData = canvasContext.getImageData(0, 0, imgWidth, imgHeight);
     var sourceBuffer = imageData.data;
 
     if (zxing != null) {
@@ -109,7 +109,7 @@ function loadVideo() {
         //var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
 
         var format = document.getElementById("scan_format").value;
-        var code = scanBarcode(canvasElement, format);
+        var code = scanBarcode(canvas, format);
         if (code.error) {
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
