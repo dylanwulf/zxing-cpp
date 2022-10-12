@@ -49,6 +49,7 @@ function loadVideo() {
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
     var cameraSelect = document.getElementById("camera_select");
+    let stopButton = document.getElementById("stop_button");
 
     cameraSelect.onchange = function() {
         startCameraWithDevice(cameraSelect.value);
@@ -63,6 +64,8 @@ function loadVideo() {
         });
       }
     }
+
+    stopButton.onclick = stopCurrentCamera;
 
     var cameraStarted = false;
     function startCameraWithDevice(cameraFacing) {
@@ -146,6 +149,7 @@ This is a simple demo of WebAssembly build (using Emcripten) of <a href="https:/
     <option value="environment">Rear</option>
     <option value="user">Front</option>
   </select>
+  <button id="stop_button">Stop Video</button>
   <br/><br/>
 
   Scan Format:
